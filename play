@@ -1,0 +1,7 @@
+#!/bin/sh 
+
+# Helper script for running ansible
+#
+export ANSIBLE_CONFIG=`pwd`/config.ini
+ansible-playbook -i inventory.ini --ask-become-pass -D  $@ ${PLAYBOOK:-playbook.yml}
+

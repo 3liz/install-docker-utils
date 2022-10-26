@@ -1,0 +1,21 @@
+# Create a lizmap user and group
+
+- name: Create lizmap group
+  group: 
+    name: lizmap 
+    state: present
+    system: yes
+
+- name: Create no login system user lizmap
+  user:
+    name: lizmap
+    system: yes
+    createhome: no
+    home: /var/lib/lizmap
+    shell: /usr/sbin/nologin
+    group: lizmap
+
+- name: Create a lizmap srv directory 
+  file: path=/srv/lizmap owner=lizmap group=lizmap mode=0775 state=directory
+
+
